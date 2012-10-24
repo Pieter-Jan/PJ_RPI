@@ -1,1 +1,0 @@
-/home/pi/Programming/PJ_RPI/Build/CMakeFiles/PJ_RPI.dir
