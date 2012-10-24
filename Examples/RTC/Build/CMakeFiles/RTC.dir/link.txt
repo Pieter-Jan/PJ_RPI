@@ -1,0 +1,1 @@
+/usr/bin/gcc      CMakeFiles/RTC.dir/main.c.o  -o RTC -rdynamic -lPJ_RPI 

@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/Programming/PJ_RPI/PJ_RPI_GPIO.c
+PJ_RPI_GPIO.h
+/home/pi/Programming/PJ_RPI/PJ_RPI_GPIO.h
+
+/home/pi/Programming/PJ_RPI/PJ_RPI_GPIO.h
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+dirent.h
+-
+fcntl.h
+-
+assert.h
+-
+sys/mman.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+unistd.h
+-
+

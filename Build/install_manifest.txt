@@ -1,0 +1,2 @@
+/usr/local/lib/libPJ_RPI.a
+/usr/local/include/PJ_RPI_GPIO.h

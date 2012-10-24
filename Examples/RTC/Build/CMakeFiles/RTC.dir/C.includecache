@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/Programming/PJ_RPI/Examples/RTC/Source/main.c
+PJ_RPI_GPIO.h
+/home/pi/Programming/PJ_RPI/Examples/RTC/Source/PJ_RPI_GPIO.h
+stdio.h
+-
+time.h
+-
+fcntl.h
+-
+
