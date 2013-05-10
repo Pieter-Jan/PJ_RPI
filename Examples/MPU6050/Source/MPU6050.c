@@ -16,6 +16,8 @@ void MPU6050_SetRegister(unsigned char regAddr, unsigned char regValue)
     // Master:   S  AD+W       RA       DATA       P
     // Slave :            ACK      ACK        ACK
 	
+    BSC0_A = MPU6050_ADDR;
+
     BSC0_DLEN = 2;
     BSC0_FIFO = (unsigned char)regAddr;
     BSC0_FIFO = (unsigned char)regValue;

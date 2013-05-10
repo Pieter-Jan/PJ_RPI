@@ -63,3 +63,19 @@ void wait_i2c_done() {
         if(timeout == 0)
             printf("wait_i2c_done() timeout. Something went wrong.\n");
 }
+
+
+// Priority 
+int SetProgramPriority(int priorityLevel)
+{
+    struct sched_param sched;
+
+    memset (&sched, 0, sizeof(sched));
+
+    if (priorityLevel > sched_get_priority_max (SCHED_RR))
+        priorityLevel = sched_get_priority_max (SCHED_RR);
+
+    sched.sched_priority = priorityLevel;
+
+    return sched_setscheduler (0, SCHED_RR, &sched);
+}

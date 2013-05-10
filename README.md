@@ -1,6 +1,6 @@
 To install:
     - mkdir Build
     - cd Build
-    - cmake ../Source
+    - cmake ../
     - make
-    - make install
+    - sudo make install

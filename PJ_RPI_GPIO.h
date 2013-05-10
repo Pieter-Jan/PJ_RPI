@@ -9,6 +9,8 @@
 #include <fcntl.h>
 #include <assert.h>
 
+#include <sched.h>		// To set the priority on linux
+
 #include <sys/mman.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -82,5 +84,8 @@ void unmap_peripheral(struct bcm2835_peripheral *p);
 // I2C
 void dump_bsc_status();
 void wait_i2c_done();
+
+// Priority
+int SetProgramPriority(int priorityLevel);
 
 #endif

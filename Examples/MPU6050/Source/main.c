@@ -11,7 +11,7 @@
 #define ACCELEROMETER_SENSITIVITY 8192.0
 #define GYROSCOPE_SENSITIVITY 65.536
 
-#define filterConstant 0.02             // Complementary filter
+#define filterConstant 0.10             // Complementary filter
 
 void ComplementaryFilter(short accData[3], short gyrData[3], float *pitch, float *roll); 	
 
@@ -31,9 +31,6 @@ int main(int argc, char *argv[])
     *gpio.addr &= ~0x3f; // Mask out bits 0-5 of FSEL0 (i.e. force to zero)
     *gpio.addr |= 0x24;  // Set bits 0-5 of FSEL0 to binary '100100'
 		
-    // I2C Device Address 0x51 (hardwired into the RTC chip)
-    BSC0_A = MPU6050_ADDR;
-
     MPU6050_Init();
     printf("MPU6050 initialized.\n");
  
