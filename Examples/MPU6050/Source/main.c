@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
  
     // Global variables
     short accData[3], gyrData[3];      	// Short is a 16 bit int!
+    short tmp;
     float pitch = 0, roll = 0;
     float pitchOnlyAcc = 0, pitchOnlyGyr = 0;
     bool isPlot = false;
@@ -61,7 +62,13 @@ int main(int argc, char *argv[])
 
 	// Read MPU6050 sensor
         MPU6050_Read(&accData[0], &gyrData[0]);
-
+	
+	// Switch Axes
+	tmp = accData[2];
+	accData[2] = -tmp;
+	tmp = accData[0];
+	accData[0] = -tmp;
+ 
 	// Calculate the pitch and roll with the complementary filter
 	ComplementaryFilter(&accData[0], &gyrData[0], &pitch, &roll); 	
 
