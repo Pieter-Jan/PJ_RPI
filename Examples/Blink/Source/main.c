@@ -1,4 +1,4 @@
-#include "PJ_RPI_GPIO.h"
+#include "PJ_RPI.h"
 #include <stdio.h>
 
 int main()
@@ -9,19 +9,17 @@ int main()
         	return -1;
     	}
 
-	printf("WtF!\n");
-
-	// Define pin 7 as output
-	INP_GPIO(4);
-	OUT_GPIO(4);
+	// Define gpio 17 as output
+	INP_GPIO(17);
+	OUT_GPIO(17);
 
 	while(1)
 	{
-		// Toggle pin 7 (blink a led!)
-		GPIO_SET = 1 << 4;
+		// Toggle 17 (blink a led!)
+		GPIO_SET = 1 << 17;
 		sleep(1);
 
-		GPIO_CLR = 1 << 4;
+		GPIO_CLR = 1 << 17;
 		sleep(1);
 	}
 

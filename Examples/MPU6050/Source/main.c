@@ -1,4 +1,4 @@
-#include "PJ_RPI_GPIO.h"
+#include "PJ_RPI.h"
 
 #include "MPU6050.h"	// Library with all MPU6050 macro's and functions
 
@@ -28,8 +28,7 @@ int main(int argc, char *argv[])
     }
 	
     /* BSC0 is on GPIO 0 & 1 */
-    *gpio.addr &= ~0x3f; // Mask out bits 0-5 of FSEL0 (i.e. force to zero)
-    *gpio.addr |= 0x24;  // Set bits 0-5 of FSEL0 to binary '100100'
+    i2c_init();
 		
     MPU6050_Init();
     printf("MPU6050 initialized.\n");

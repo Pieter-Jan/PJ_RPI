@@ -1,8 +1,7 @@
 #ifndef _INC_MPU6050_H
 #define _INC_MPU6050_H
 
-#include "PJ_RPI_GPIO.h"
-#include <stdio.h>
+#include "PJ_RPI.h"
 
 #define MPU6050_ADDR 0b01101001	// 7 bit adres 
 #define CONFIG 0x1A

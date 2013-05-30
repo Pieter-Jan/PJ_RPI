@@ -1,4 +1,4 @@
-#include "PJ_RPI_GPIO.h"
+#include "PJ_RPI.h"
 #include <stdio.h>
 #include <time.h>
 #include <fcntl.h>
@@ -34,9 +34,7 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    /* BSC0 is on GPIO 0 & 1 */
-    *gpio.addr &= ~0x3f; // Mask out bits 0-5 of FSEL0 (i.e. force to zero)
-    *gpio.addr |= 0x24;  // Set bits 0-5 of FSEL0 to binary '100100'
+    i2c_init();
 		
     // I2C Device Address 0x51 (hardwired into the RTC chip)
     BSC0_A = 0x51;
