@@ -4,9 +4,20 @@
 #include <sys/time.h>
 #include <math.h>
 #include <stdio.h>
+#include <signal.h>
+#include <stdlib.h>
 
 struct timespec tp;
 long startTime, procesTime;
+
+void exit_handler(int s)
+{
+	PCA9685_SetDutyCycle(0, 0);
+	PCA9685_SetDutyCycle(1, 0);
+	PCA9685_SetDutyCycle(2, 0);
+	PCA9685_SetDutyCycle(3, 0);
+	exit(1);
+}
 
 int main()
 {
@@ -23,16 +34,23 @@ int main()
     // I2C initialization
     i2c_init();
 
-	INP_GPIO(17);
-	OUT_GPIO(17);
-	GPIO_CLR = 1 << 17;
-
 	// Initialize Hardware
 	PCA9685_Init();
 
 	// Set PWM Frequency to 100Hz
 	PCA9685_SetFrequency(100);
+	PCA9685_SetDutyCycle(0, 10);
+	sleep(2);
 
+	// Catch ctrl+C so that the motors stop then (SAFETY)
+	struct sigaction sigIntHandler;
+
+	sigIntHandler.sa_handler = exit_handler;
+	sigemptyset(&sigIntHandler.sa_mask);
+	sigIntHandler.sa_flags = 0;
+
+	sigaction(SIGINT, &sigIntHandler, NULL);
+ 
 	while(1)
 	{
 		// Get process start time
@@ -40,13 +58,8 @@ int main()
 		startTime = tp.tv_sec*1000000000 + tp.tv_nsec;
 
 		// Update PWM ; Convert percentage from O -> 100 to 10 -> 20
-		PCA9685_SetDutyCycle(0, 20);
-		PCA9685_SetDutyCycle(1, 10);
-		PCA9685_SetDutyCycle(2, 50);
-		PCA9685_SetDutyCycle(3, 50);
+		PCA9685_SetDutyCycle(0, 10+0.1*100);
 		
-		GPIO_SET = 1 << 17;
-
 		// Get process end time
 		clock_gettime(CLOCK_REALTIME, &tp);
 		procesTime = (tp.tv_sec*1000000000 + tp.tv_nsec) - startTime;
