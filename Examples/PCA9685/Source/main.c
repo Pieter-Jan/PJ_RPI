@@ -53,21 +53,28 @@ int main()
  
 	while(1)
 	{
-		// Get process start time
-		clock_gettime(CLOCK_REALTIME, &tp);
-		startTime = tp.tv_sec*1000000000 + tp.tv_nsec;
-
 		// Update PWM ; Convert percentage from O -> 100 to 10 -> 20
+		PCA9685_SetDutyCycle(0, 10+0.1*10);
+		sleep(3);
+		PCA9685_SetDutyCycle(0, 10+0.1*20);
+		sleep(3);
+		PCA9685_SetDutyCycle(0, 10+0.1*30);
+		sleep(3);
+		PCA9685_SetDutyCycle(0, 10+0.1*40);
+		sleep(3);
+		PCA9685_SetDutyCycle(0, 10+0.1*50);
+		sleep(3);
+		PCA9685_SetDutyCycle(0, 10+0.1*60);
+		sleep(3);
+		PCA9685_SetDutyCycle(0, 10+0.1*70);
+		sleep(3);	
+		PCA9685_SetDutyCycle(0, 10+0.1*80);
+		sleep(3);
+		PCA9685_SetDutyCycle(0, 10+0.1*90);
+		sleep(3);
 		PCA9685_SetDutyCycle(0, 10+0.1*100);
+		sleep(3);	
+		PCA9685_SetDutyCycle(0, 0);
 		
-		// Get process end time
-		clock_gettime(CLOCK_REALTIME, &tp);
-		procesTime = (tp.tv_sec*1000000000 + tp.tv_nsec) - startTime;
-		// Wait until process has lasted 10 ms
-		while(procesTime < 10000000)
-		{
-			clock_gettime(CLOCK_REALTIME, &tp);
-			procesTime = (tp.tv_sec*1000000000 + tp.tv_nsec) - startTime;
-		}
 	}
 }  
