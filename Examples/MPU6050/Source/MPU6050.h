@@ -3,7 +3,8 @@
 
 #include "PJ_RPI.h"
 
-#define MPU6050_ADDR 0b01101001	// 7 bit adres 
+#define MPU6050_ADDR 0x68	// 7 bit adres 
+//#define MPU6050_ADDR 0x69     //One of these address should work. Depends on module HW address
 #define CONFIG 0x1A
 #define ACCEL_CONFIG 0x1C
 #define GYRO_CONFIG 0x1B
