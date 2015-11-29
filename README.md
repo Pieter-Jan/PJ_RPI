@@ -1,5 +1,5 @@
 To install:
-* edit PJ_RPI.h to set the version of board (+uncomment NO_GPIOMEM if you want to)
+* edit PJ_RPI.h to set the version of board
 * mkdir Build
 * cd Build
 * cmake ../
