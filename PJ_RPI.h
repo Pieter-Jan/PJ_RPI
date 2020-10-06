@@ -17,20 +17,23 @@
 
 #include <unistd.h>
 
-// Define which Raspberry Pi board are you using. Take care to have defined only one at time.
-#define RPI
-//#define RPI2
+// Define which Raspberry Pi board are you using
+#define RPI2
 
 #ifdef RPI
 #define BCM2708_PERI_BASE       0x20000000
 #define GPIO_BASE               (BCM2708_PERI_BASE + 0x200000)	// GPIO controller 
 #define BSC0_BASE 		(BCM2708_PERI_BASE + 0x205000)	// I2C controller	
-#endif
-
-#ifdef RPI2
+#elif defined(RPI2) || defined(RPI3)
 #define BCM2708_PERI_BASE       0x3F000000
 #define GPIO_BASE               (BCM2708_PERI_BASE + 0x200000)	// GPIO controller. Maybe wrong. Need to be tested.
 #define BSC0_BASE 		(BCM2708_PERI_BASE + 0x804000)	// I2C controller	
+#elif defined(RPI4)
+#define BCM2708_PERI_BASE       0xFE000000
+#define GPIO_BASE               (BCM2708_PERI_BASE + 0x200000)	// GPIO controller. Maybe wrong. Need to be tested.
+#define BSC0_BASE 		(BCM2708_PERI_BASE + 0x804000)	// I2C controller	
+#else
+#error "No supported board selected"
 #endif	
 
 #define PAGE_SIZE 		(4*1024)
